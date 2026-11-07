@@ -162,6 +162,14 @@
   .site-footer__grid { grid-template-columns: 1.3fr 1.25fr .7fr .8fr; align-items: start; }
 }
 
+.featured__visual::before {
+  inset: auto auto 3% 12%;
+  font-size: clamp(5rem, 9vw, 8.5rem);
+  line-height: .64;
+  letter-spacing: -.03em;
+  text-align: center;
+}
+
 /* Inner pages — the same floral, layered visual language as the landing. */
 body[data-page="catalog"] main,
 body[data-page="favorites"] main,
@@ -929,12 +937,16 @@ body[data-page="product"] .product-detail__journal-facts div {
 .quick-view {
   position: fixed;
   inset: 0;
-  width: min(92vw, 64rem);
-  height: min(88dvh, 48rem);
-  max-height: min(88dvh, 48rem);
+  width: min(90vw, 60rem);
+  height: min(86dvh, 44rem);
+  max-height: min(86dvh, 44rem);
   margin: auto;
-  border-radius: 1.5rem;
-  background: #fffdf9;
+  border-radius: 1.4rem;
+  background:
+    radial-gradient(ellipse 46% 72% at 8% 18%, rgba(234, 156, 175, .28), transparent 72%),
+    radial-gradient(ellipse 42% 68% at 92% 88%, rgba(194, 220, 128, .2), transparent 72%),
+    linear-gradient(118deg, #f8e7ed 0%, #fffdf9 47%, #f5f1e8 100%);
+  box-shadow: 0 2rem 5rem rgba(42, 23, 25, .32);
   overflow: hidden;
   overscroll-behavior: none;
 }
@@ -972,11 +984,25 @@ body[data-page="product"] .product-detail__journal-facts div {
 }
 
 .quick-view__close svg { width: 100%; height: 100%; fill: none; stroke: currentColor; stroke-linecap: round; stroke-width: 2; }
-.quick-view__layout { grid-template-columns: minmax(18rem, .94fr) minmax(22rem, 1.06fr); height: 100%; min-height: 0; }
-.quick-view__gallery { min-height: 0; padding: clamp(1rem, 2vw, 1.5rem); background: linear-gradient(145deg, #f4dce5, #edf1df); }
-.quick-view__gallery .product-gallery__stage { border-radius: 1.15rem; }
-.quick-view__layout .product-gallery__stage > img { min-height: 0; }
-.quick-view__copy { display: grid; min-height: 0; align-content: center; gap: .9rem; padding: clamp(2.1rem, 4vw, 4rem); overflow: hidden; }
+.quick-view__layout { grid-template-columns: minmax(18rem, .96fr) minmax(22rem, 1.04fr); height: 100%; min-height: 0; }
+.quick-view__gallery {
+  min-height: 0;
+  padding: clamp(1rem, 2vw, 1.4rem);
+  background: linear-gradient(145deg, rgba(249, 224, 232, .88), rgba(238, 242, 224, .9));
+}
+.quick-view__gallery .product-gallery__stage {
+  padding: .45rem;
+  border: 1px solid rgba(78, 10, 11, .14);
+  border-radius: 1.1rem;
+  background: linear-gradient(145deg, rgba(255, 253, 249, .94), rgba(248, 231, 237, .82));
+}
+.quick-view__layout .product-gallery__stage > img {
+  min-height: 0;
+  padding: 0;
+  border-radius: .8rem;
+  object-fit: contain;
+}
+.quick-view__copy { display: grid; min-height: 0; align-content: center; gap: .85rem; padding: clamp(2rem, 3.5vw, 3.2rem); overflow: hidden; }
 .quick-view__copy .section-note { margin: 0; }
 .quick-view__copy h2 { margin: 0; font-size: clamp(2.4rem, 4vw, 4.4rem); }
 .quick-view__copy > p:not(.section-note):not(.product-detail__price) { margin: 0; color: var(--ink-soft); font-size: 1.03rem; line-height: 1.55; }
@@ -1002,6 +1028,25 @@ body[data-page="product"] .product-detail__journal-facts div {
 
 .quick-view__add:hover { background: #6e1c2d; transform: translateY(-.14rem); }
 .quick-view__add svg { width: 100%; height: 100%; }
+
+@media (min-width: 42rem) {
+  .quick-view__gallery .product-gallery {
+    grid-template-rows: auto auto;
+    align-content: center;
+  }
+
+  .quick-view__gallery .product-gallery__stage {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+    justify-self: center;
+  }
+
+  .quick-view__layout .product-gallery__stage > img {
+    aspect-ratio: 1;
+    object-fit: cover;
+  }
+}
 
 .cart-item > .product-illustration {
   width: 5rem;
@@ -1074,7 +1119,7 @@ body[data-page="product"] .product-detail__journal-facts div {
   .product-detail__media { padding: .75rem; }
   .product-detail__gallery .product-gallery__stage { min-height: 24rem; }
   .product-detail__journal-facts div { grid-template-columns: 1fr; gap: .2rem; }
-  .quick-view { height: 91dvh; max-height: 91dvh; border-radius: 1.15rem; }
+  .quick-view { width: 94vw; height: 90dvh; max-height: 90dvh; border-radius: 1.15rem; }
   .quick-view__layout { grid-template-columns: 1fr; grid-template-rows: minmax(0, 45%) minmax(0, 55%); min-height: 0; }
   .quick-view__gallery { min-height: 0; max-height: none; }
   .quick-view__copy { align-content: start; gap: .55rem; padding: 1.25rem 1.2rem 1.1rem; }
@@ -1579,8 +1624,8 @@ body[data-page="contacts"] .contact-hero__copy > p {
 
 .contact-hero__script {
   position: absolute;
-  top: 10%;
-  right: 12%;
+  top: 6%;
+  right: 16%;
   z-index: 0;
   color: rgba(78, 10, 11, .35);
   font-family: var(--font-script);
