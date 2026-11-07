@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 700" role="img" aria-labelledby="title desc">
+  <title id="title">Графический букет розовых пионов</title>
+  <desc id="desc">Масштабируемая векторная композиция из пионов, ранункулюсов, зелени и атласной ленты.</desc>
+  <defs>
+    <linearGradient id="paperRose" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#F8DDE3"/><stop offset="1" stop-color="#D67D99"/></linearGradient>
+    <linearGradient id="paperCream" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#FFFDF6"/><stop offset="1" stop-color="#E7D6BE"/></linearGradient>
+    <radialGradient id="peony" cx="35%" cy="30%"><stop stop-color="#FFE9EC"/><stop offset=".58" stop-color="#EAA6B5"/><stop offset="1" stop-color="#B95C79"/></radialGradient>
+    <radialGradient id="ranunculus" cx="34%" cy="25%"><stop stop-color="#FFF5E6"/><stop offset=".6" stop-color="#F1C8B5"/><stop offset="1" stop-color="#C98682"/></radialGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="16" stdDeviation="15" flood-color="#4E0A0B" flood-opacity=".18"/></filter>
+  </defs>
+  <g filter="url(#shadow)">
+    <path fill="url(#paperCream)" d="M84 262 300 651 516 262 429 194 300 250 171 194Z"/>
+    <path fill="url(#paperRose)" opacity=".9" d="M64 280 300 636 234 206 137 177Z"/>
+    <path fill="#FDEDF1" opacity=".96" d="M536 280 300 636 366 206 463 177Z"/>
+    <g stroke="#708A68" stroke-linecap="round" stroke-width="11">
+      <path d="M300 285 272 621"/><path d="M310 281 344 621"/><path d="M280 287 206 580"/><path d="M326 289 398 580"/>
+    </g>
+    <g fill="#6C835D">
+      <ellipse cx="147" cy="267" rx="30" ry="68" transform="rotate(-35 147 267)"/><ellipse cx="183" cy="211" rx="25" ry="59" transform="rotate(31 183 211)"/><ellipse cx="413" cy="213" rx="26" ry="61" transform="rotate(-31 413 213)"/><ellipse cx="455" cy="274" rx="30" ry="70" transform="rotate(35 455 274)"/><ellipse cx="123" cy="356" rx="24" ry="54" transform="rotate(-48 123 356)"/><ellipse cx="477" cy="356" rx="24" ry="54" transform="rotate(48 477 356)"/>
+    </g>
+    <g fill="url(#peony)">
+      <g transform="translate(300 250)"><ellipse rx="71" ry="33" transform="rotate(0) translate(0 -41)"/><ellipse rx="71" ry="33" transform="rotate(45) translate(0 -41)"/><ellipse rx="71" ry="33" transform="rotate(90) translate(0 -41)"/><ellipse rx="71" ry="33" transform="rotate(135) translate(0 -41)"/><ellipse rx="71" ry="33" transform="rotate(180) translate(0 -41)"/><ellipse rx="71" ry="33" transform="rotate(225) translate(0 -41)"/><ellipse rx="71" ry="33" transform="rotate(270) translate(0 -41)"/><ellipse rx="71" ry="33" transform="rotate(315) translate(0 -41)"/><circle r="28" fill="#B85C79"/></g>
+      <g transform="translate(216 299) scale(.77)"><ellipse rx="71" ry="33" transform="rotate(0) translate(0 -41)"/><ellipse rx="71" ry="33" transform="rotate(45) translate(0 -41)"/><ellipse rx="71" ry="33" transform="rotate(90) translate(0 -41)"/><ellipse rx="71" ry="33" transform="rotate(135) translate(0 -41)"/><ellipse rx="71" ry="33" transform="rotate(180) translate(0 -41)"/><ellipse rx="71" ry="33" transform="rotate(225) translate(0 -41)"/><ellipse rx="71" ry="33" transform="rotate(270) translate(0 -41)"/><ellipse rx="71" ry="33" transform="rotate(315) translate(0 -41)"/><circle r="28" fill="#B85C79"/></g>
+      <g transform="translate(390 302) scale(.8)"><ellipse rx="71" ry="33" transform="rotate(0) translate(0 -41)"/><ellipse rx="71" ry="33" transform="rotate(45) translate(0 -41)"/><ellipse rx="71" ry="33" transform="rotate(90) translate(0 -41)"/><ellipse rx="71" ry="33" transform="rotate(135) translate(0 -41)"/><ellipse rx="71" ry="33" transform="rotate(180) translate(0 -41)"/><ellipse rx="71" ry="33" transform="rotate(225) translate(0 -41)"/><ellipse rx="71" ry="33" transform="rotate(270) translate(0 -41)"/><ellipse rx="71" ry="33" transform="rotate(315) translate(0 -41)"/><circle r="28" fill="#B85C79"/></g>
+    </g>
+    <g fill="url(#ranunculus)">
+      <g transform="translate(175 229)"><circle r="47"/><circle r="33" fill="none" stroke="#E9B8A6" stroke-width="12"/><circle r="18" fill="#D28C7E"/></g>
+      <g transform="translate(425 235)"><circle r="45"/><circle r="31" fill="none" stroke="#E9B8A6" stroke-width="12"/><circle r="17" fill="#D28C7E"/></g>
+      <g transform="translate(145 352) scale(.76)"><circle r="47"/><circle r="33" fill="none" stroke="#E9B8A6" stroke-width="12"/><circle r="18" fill="#D28C7E"/></g>
+      <g transform="translate(455 354) scale(.76)"><circle r="47"/><circle r="33" fill="none" stroke="#E9B8A6" stroke-width="12"/><circle r="18" fill="#D28C7E"/></g>
+    </g>
+    <g fill="#D96F8E"><circle cx="104" cy="244" r="10"/><circle cx="91" cy="261" r="8"/><circle cx="116" cy="272" r="8"/><circle cx="500" cy="245" r="10"/><circle cx="512" cy="261" r="8"/><circle cx="489" cy="275" r="8"/></g>
+    <path fill="#B8617C" d="M239 489c22-32 100-32 122 0-15 28-33 39-61 39-28 0-46-11-61-39Z"/>
+    <path fill="url(#paperRose)" d="M300 522c-62 0-104 35-104 71 39 7 70-4 104-37 34 33 65 44 104 37 0-36-42-71-104-71Z"/>
+  </g>
+</svg>

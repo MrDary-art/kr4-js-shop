@@ -1,0 +1,37 @@
+{
+  "generatedAt": "2026-11-06T19:03:23.962Z",
+  "standard": "WCAG 2.1 A/AA via axe-core",
+  "pages": [
+    {
+      "url": "http://127.0.0.1:4173/index.html",
+      "title": "Флора — цветы к важному дню",
+      "violations": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/catalog.html",
+      "title": "Каталог букетов — Флора",
+      "violations": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/product.html?id=1",
+      "title": "Розовый сад — Флора",
+      "violations": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/cart.html",
+      "title": "Корзина — Флора",
+      "violations": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/order.html",
+      "title": "Доставка и заказ — Флора",
+      "violations": []
+    },
+    {
+      "url": "http://127.0.0.1:4173/contacts.html",
+      "title": "Контакты — Флора",
+      "violations": []
+    }
+  ],
+  "totalViolations": 0
+}

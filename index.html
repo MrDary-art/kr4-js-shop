@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Флора — городской цветочный магазин: авторские букеты и бережная доставка.">
+  <meta name="theme-color" content="#FFE6F0">
+  <title>Флора — цветы к важному дню</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Prata&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <script>document.documentElement.classList.add('js')</script>
+  <script type="module" src="js/main.js"></script>
+</head>
+<body data-page="home">
+  <a class="skip-link" href="#main-content">К основному содержанию</a>
+  <header class="site-header" data-header>
+    <a class="brand" href="index.html" aria-label="Флора, главная">флора</a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Меню</button>
+    <nav class="site-nav" id="site-nav" aria-label="Основная навигация">
+      <a href="catalog.html">Каталог</a>
+      <a href="saved.html">Избранное</a>
+      <a href="#atelier">О флористике</a>
+      <a href="order.html">Доставка</a>
+      <a href="contacts.html">Контакты</a>
+    </nav>
+    <a class="cart-link" href="bag.html" aria-label="Корзина, 0 товаров"><svg class="cart-link__icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M3 4h2l2.1 10.1a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.6L20.5 7H6M9.5 20a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5ZM17 20a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z"/></svg><span class="cart-count" data-cart-count aria-hidden="true">0</span></a>
+  </header>
+
+  <main id="main-content">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__photo shutter" data-shutter>
+        <picture><img src="images/hero-bouquet-clean-cutout.png" width="1186" height="1327" fetchpriority="high" decoding="async" alt="Объёмный букет пудровых садовых роз с атласной лентой"></picture>
+      </div>
+      <div class="hero__content">
+        <h1 id="hero-title" class="display lines"><span class="line"><span data-line style="--i:0">Цветы</span></span><span class="line"><span data-line style="--i:1">говорят</span></span></h1>
+        <p class="hero__lead" data-rise style="--i:2">Выберите настроение — мы соберём цветы для важного жеста, тёплой встречи или просто хорошего дня.</p>
+        <a class="button button--primary hero__action" href="#featured" data-rise style="--i:3">Выбрать настроение</a>
+      </div>
+    </section>
+
+    <section class="featured" id="featured" aria-labelledby="featured-title" data-reveal>
+      <div class="featured__visual" aria-hidden="true"><img src="images/featured-bouquet-transparent.png" width="1049" height="1500" loading="lazy" decoding="async" alt="" data-object-reveal></div>
+      <div class="featured__copy">
+        <div class="featured__intro">
+          <h2 id="featured-title">Букеты с характером</h2>
+          <p>Двенадцать композиций: от лёгких монобукетов до больших авторских сборок. Состав, размер и цена видны до заказа.</p>
+        </div>
+        <div class="mood-picker" aria-labelledby="mood-title">
+          <div class="mood-picker__heading">
+            <h3 id="mood-title">Выбрать по настроению</h3>
+            <p>Не нужно знать названия цветов. Начните с того, какое впечатление хотите оставить.</p>
+          </div>
+          <div class="mood-picker__grid">
+            <a href="catalog.html?occasion=date"><span class="color-dot color-dot--rose" aria-hidden="true"></span><strong>Нежно</strong><small>Для свидания</small></a>
+            <a href="catalog.html?occasion=birthday"><span class="color-dot color-dot--sun" aria-hidden="true"></span><strong>Ярко</strong><small>На день рождения</small></a>
+            <a href="catalog.html?occasion=thanks"><span class="color-dot color-dot--white" aria-hidden="true"></span><strong>Сдержанно</strong><small>В знак благодарности</small></a>
+            <a href="catalog.html?occasion=universal"><span class="color-dot color-dot--field" aria-hidden="true"></span><strong>Свободно</strong><small>Без повода</small></a>
+            <a href="catalog.html?occasion=wedding"><span class="color-dot color-dot--blue" aria-hidden="true"></span><strong>Торжественно</strong><small>Для свадьбы</small></a>
+            <a href="catalog.html?occasion=universal"><span class="color-dot color-dot--warm" aria-hidden="true"></span><strong>Тепло</strong><small>Для близких</small></a>
+          </div>
+        </div>
+        <div class="featured__actions">
+          <a class="button button--primary" href="catalog.html">Открыть каталог</a>
+          <a class="button button--quiet" href="product.html?id=3">Посмотреть букет дня</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="atelier" id="atelier" aria-labelledby="atelier-title">
+      <div class="atelier__copy" data-reveal>
+        <h2 id="atelier-title">Собираем в день, который важен</h2>
+        <p class="lead">Не храним готовые букеты на полке: флорист подбирает свежие стебли под вашу палитру, повод и размер композиции.</p>
+        <dl class="atelier__facts">
+          <div><dt>Состав</dt><dd>Показываем в карточке заранее</dd></div>
+          <div><dt>Замена</dt><dd>Только с сохранением характера букета</dd></div>
+          <div><dt>Открытка</dt><dd>Подпишем без доплаты</dd></div>
+        </dl>
+        <div class="atelier__delivery">
+          <h3>Доставка с заботой</h3>
+          <p>Выберите дату и интервал, добавьте открытку и способ связи с получателем — подготовку и бережную передачу возьмём на себя.</p>
+        </div>
+        <div class="atelier__actions"><a class="button button--primary" href="catalog.html">Выбрать свой букет</a><a class="button button--quiet" href="order.html">Условия доставки</a></div>
+      </div>
+      <figure class="atelier__photo atelier__photo--bouquet shutter" data-reveal><img src="images/atelier-spring-bouquet.png" width="1159" height="1358" loading="lazy" decoding="async" alt="Объёмный букет белых ранункулюсов, лиловой эустомы, голубого дельфиниума и тюльпанов"></figure>
+    </section>
+
+    <section class="reviews" aria-labelledby="reviews-title">
+      <div class="reviews__heading" data-reveal>
+        <h2 id="reviews-title">Букет остаётся<br>в памяти</h2>
+        <p>Тёплые слова, которые остаются с нами вместе с ароматом цветов и важными моментами.</p>
+      </div>
+      <div class="reviews__carousel" data-reviews-carousel aria-roledescription="карусель" aria-label="Отзывы покупателей">
+        <div class="reviews__grid" data-reviews-track>
+          <figure class="review-card" data-reveal><img src="images/review-anna.jpg" width="583" height="879" loading="lazy" decoding="async" alt="Девушка держит пудровый букет садовых роз"><figcaption class="glass-card"><p class="review-stars" aria-label="5 из 5 звёзд">★★★★★</p><blockquote>«Упаковка выглядит ещё красивее вживую, а открытку подписали очень аккуратно».</blockquote><p>Анна · подарок для мамы</p></figcaption></figure>
+          <figure class="review-card" data-reveal><img src="images/review-irina.jpg" width="583" height="879" loading="lazy" decoding="async" alt="Женщина получает букет пионов и гортензии"><figcaption class="glass-card"><p class="review-stars" aria-label="5 из 5 звёзд">★★★★★</p><blockquote>«Флорист сохранил нежную палитру и предупредил о каждой замене в составе».</blockquote><p>Ирина · весенний букет</p></figcaption></figure>
+          <figure class="review-card" data-reveal><img src="images/review-marina.jpg" width="584" height="879" loading="lazy" decoding="async" alt="Две подруги передают друг другу букет в цветочной мастерской"><figcaption class="glass-card"><p class="review-stars" aria-label="5 из 5 звёзд">★★★★★</p><blockquote>«Доставка приехала в выбранный интервал, цветы были свежими и объёмными».</blockquote><p>Марина · цветы без повода</p></figcaption></figure>
+          <figure class="review-card" data-reveal><img src="images/review-sofia.png" width="2048" height="3072" loading="lazy" decoding="async" alt="Девушка с букетом белых тюльпанов и розовых ранункулюсов"><figcaption class="glass-card"><p class="review-stars" aria-label="5 из 5 звёзд">★★★★★</p><blockquote>«Очень бережная доставка: написали заранее, а букет оказался ещё объёмнее, чем на фото».</blockquote><p>София · нежный комплимент</p></figcaption></figure>
+          <figure class="review-card" data-reveal><img src="images/review-daniel.png" width="2048" height="3072" loading="lazy" decoding="async" alt="Пара принимает букет в светлом интерьере"><figcaption class="glass-card"><p class="review-stars" aria-label="5 из 5 звёзд">★★★★★</p><blockquote>«Заказал сюрприз: команда помогла с текстом открытки и всё приехало точно ко времени».</blockquote><p>Даниил · букет для свидания</p></figcaption></figure>
+          <figure class="review-card" data-reveal><img src="images/review-elena.png" width="2048" height="3072" loading="lazy" decoding="async" alt="Женщина получает букет персиковых роз в светлой квартире"><figcaption class="glass-card"><p class="review-stars" aria-label="5 из 5 звёзд">★★★★★</p><blockquote>«Заказ оформила вечером, а утром уже получила бережное сообщение от курьера. Цветы — как на фото, только ещё нежнее».</blockquote><p>Елена · сюрприз для сестры</p></figcaption></figure>
+          <figure class="review-card" data-reveal><img src="images/review-artem.png" width="2048" height="3072" loading="lazy" decoding="async" alt="Пара с бордовым букетом у городского кафе"><figcaption class="glass-card"><p class="review-stars" aria-label="5 из 5 звёзд">★★★★★</p><blockquote>«Угадали с настроением: глубокий винный букет и очень деликатная упаковка. Получательница была в восторге».</blockquote><p>Артём · важное свидание</p></figcaption></figure>
+          <figure class="review-card" data-reveal><img src="images/review-vera.png" width="2048" height="3072" loading="lazy" decoding="async" alt="Девушка с весенним букетом белых тюльпанов"><figcaption class="glass-card"><p class="review-stars" aria-label="5 из 5 звёзд">★★★★★</p><blockquote>«Попросила сделать композицию лёгкой и весенней — получилось именно то самое ощущение. Спасибо флористу за вкус».</blockquote><p>Вера · цветы без повода</p></figcaption></figure>
+        </div>
+        <div class="reviews__controls" aria-label="Управление отзывами"><button class="reviews__control" type="button" data-review-prev aria-label="Предыдущий отзыв">←</button><span class="reviews__count" data-reviews-count aria-live="off">1 / 8</span><button class="reviews__control" type="button" data-review-next aria-label="Следующий отзыв">→</button></div>
+      </div>
+    </section>
+
+    <section class="faq" aria-labelledby="faq-title">
+      <div class="faq__media" data-reveal><span class="faq__halo" aria-hidden="true"></span><span class="faq__signature" aria-hidden="true"><span>берегите</span><span>важное</span></span><img class="faq__bouquet" src="images/catalog-bouquet-transparent.png" width="1024" height="1365" loading="lazy" decoding="async" alt="" data-object-reveal></div>
+      <div class="faq__content" data-reveal>
+        <h2 id="faq-title">Перед заказом</h2>
+        <p>Доставляем ежедневно с 10:00 до 21:00. Точную стоимость доставки покажем после выбора адреса.</p>
+        <details open><summary>Можно ли изменить состав?</summary><p>Да. Укажите нежелательные цветы в комментарии. Флорист сохранит палитру, размер и характер букета.</p></details>
+        <details><summary>Пришлёте фото букета?</summary><p>По запросу мы отправим фото готовой композиции перед передачей курьеру.</p></details>
+        <details><summary>Есть ли анонимная доставка?</summary><p>Да. Мы не назовём заказчика и не вложим чек в букет.</p></details>
+        <details><summary>Что делать, если получатель не отвечает?</summary><p>Курьер свяжется с заказчиком и согласует повторную попытку.</p></details>
+        <a class="button button--primary" href="order.html">Перейти к заказу</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer site-footer--unified">
+    <img src="images/bouquet-garden-rose.jpg" width="354" height="354" loading="lazy" decoding="async" alt="">
+    <div class="site-footer__grid">
+      <div class="site-footer__identity"><a class="brand brand--footer" href="index.html">Флора</a><p>Цветы к важному дню.</p></div>
+      <address class="site-footer__address"><a href="https://yandex.ru/maps" rel="noopener" target="_blank">Цветной бульвар, 15</a><span>Москва, 127051</span><span>Ежедневно 09:00–21:00</span><a href="tel:+74951283024">+7 495 128-30-24</a><a class="site-footer__write" href="mailto:hello@flora-shop.ru">Написать нам</a></address>
+      <nav aria-label="Навигация в подвале"><a href="catalog.html">Каталог</a><a href="order.html">Доставка</a><a href="contacts.html">Контакты</a></nav>
+      <div class="site-footer__contact"><a href="mailto:hello@flora-shop.ru">hello@flora-shop.ru</a><a href="tel:+74951283024">+7 495 128-30-24</a></div>
+    </div>
+    <div class="site-footer__bottom"><p class="site-footer__wordmark">флора</p><p>© <span data-current-year>2026</span> Флора. Все права защищены.</p></div>
+  </footer>
+  <button class="scroll-top" type="button" data-scroll-top aria-label="Вернуться наверх"><span aria-hidden="true">↑</span></button>
+  <div class="toast" role="status" aria-live="polite" aria-atomic="true" hidden data-toast></div>
+</body>
+</html>

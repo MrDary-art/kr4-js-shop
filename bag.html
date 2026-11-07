@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#FFE6F0">
+  <title>Корзина — Флора</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Prata&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <script>document.documentElement.classList.add('js')</script>
+  <script type="module" src="js/main.js"></script>
+</head>
+<body data-page="cart">
+  <a class="skip-link" href="#main-content">К основному содержанию</a>
+  <header class="site-header" data-header>
+    <a class="brand" href="index.html" aria-label="Флора, главная">флора</a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Меню</button>
+    <nav class="site-nav" id="site-nav" aria-label="Основная навигация">
+      <a href="catalog.html">Каталог</a><a href="saved.html">Избранное</a><a href="index.html#atelier">О флористике</a><a href="order.html">Доставка</a><a href="contacts.html">Контакты</a>
+    </nav>
+    <a class="cart-link" aria-current="page" href="bag.html" aria-label="Корзина, 0 товаров"><svg class="cart-link__icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M3 4h2l2.1 10.1a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.6L20.5 7H6M9.5 20a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5ZM17 20a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z"/></svg><span class="cart-count" data-cart-count aria-hidden="true">0</span></a>
+  </header>
+  <main id="main-content">
+    <header class="cart-hero" data-reveal>
+      <div class="cart-hero__glass"><h1>Корзина</h1></div>
+    </header>
+    <div class="cart-layout" data-reveal>
+      <section class="cart-items" aria-labelledby="cart-items-title">
+        <div class="cart-items__heading">
+          <h2 id="cart-items-title">Ваши букеты</h2>
+          <p data-cart-item-count aria-live="polite"></p>
+        </div>
+        <div data-cart-items></div>
+        <div class="empty-state" data-cart-empty hidden><h2>Корзина пуста</h2><p>Найдите букет по поводу или настроению, а мы сохраним его здесь.</p><a class="button button--primary" href="catalog.html">Выбрать букет</a></div>
+      </section>
+      <aside class="cart-summary" aria-labelledby="cart-summary-title">
+        <div class="cart-summary__heading"><h2 id="cart-summary-title">Итог заказа</h2><p>Проверьте состав перед оформлением.</p></div>
+        <dl><div><dt>Товары</dt><dd data-cart-subtotal>0 ₽</dd></div><div><dt>Скидка</dt><dd data-cart-discount>0 ₽</dd></div><div><dt>Доставка</dt><dd>рассчитаем по адресу</dd></div><div class="cart-summary__total"><dt>К оплате</dt><dd data-cart-total>0 ₽</dd></div></dl>
+        <form class="promo-form" data-promo-form><label for="promo-code">Промокод</label><div><input id="promo-code" name="promo" autocomplete="off" placeholder="FLORA10"><button class="button button--quiet" type="submit">Применить</button></div><p class="form-message" aria-live="polite" data-promo-message></p></form>
+        <a class="button button--primary button--wide" href="order.html" data-checkout-link>Оформить заказ</a>
+      </aside>
+    </div>
+    <section class="related-products cart-related" aria-labelledby="cart-suggestions-title" data-reveal>
+      <div class="cart-related__heading"><h2 id="cart-suggestions-title">Можно добавить</h2><p>Ещё несколько композиций — для открытки, дома или важного человека.</p></div>
+      <div class="product-grid product-grid--cart-related" data-cart-suggestions></div>
+    </section>
+  </main>
+  <dialog class="quick-view" data-quick-view aria-labelledby="quick-view-title"><button class="quick-view__close" type="button" aria-label="Закрыть окно" data-dialog-close><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg></button><div data-quick-view-content></div></dialog>
+  <footer class="site-footer site-footer--unified">
+    <img src="images/bouquet-pastel-wildflower.jpg" width="354" height="354" loading="lazy" decoding="async" alt="">
+    <div class="site-footer__grid"><div class="site-footer__identity"><a class="brand brand--footer" href="index.html">Флора</a><p>Цветы к важному дню.</p></div><address class="site-footer__address"><a href="https://yandex.ru/maps" rel="noopener" target="_blank">Цветной бульвар, 15</a><span>Москва, 127051</span><span>Ежедневно 09:00–21:00</span><a href="tel:+74951283024">+7 495 128-30-24</a><a class="site-footer__write" href="mailto:hello@flora-shop.ru">Написать нам</a></address><nav aria-label="Навигация в подвале"><a href="catalog.html">Каталог</a><a href="order.html">Доставка</a><a href="contacts.html">Контакты</a></nav><div class="site-footer__contact"><a href="mailto:hello@flora-shop.ru">hello@flora-shop.ru</a><a href="tel:+74951283024">+7 495 128-30-24</a></div></div>
+    <div class="site-footer__bottom"><p class="site-footer__wordmark">флора</p><p>© <span data-current-year>2026</span> Флора. Все права защищены.</p></div>
+  </footer>
+  <button class="scroll-top" type="button" data-scroll-top aria-label="Вернуться наверх"><span aria-hidden="true">↑</span></button>
+  <div class="toast" role="status" aria-live="polite" aria-atomic="true" hidden data-toast></div>
+</body></html>
