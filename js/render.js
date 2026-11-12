@@ -184,6 +184,11 @@ function bouquetIllustration(product, variant = 0, className = "") {
 function productImage(product) {
   const image = element("img", "product-card__image");
   image.src = product.cardImage || product.image;
+  if (product.cardImage) {
+    const responsiveName = product.cardImage.split("/").at(-1).replace(/\.png$/i, "-480.png");
+    image.srcset = `${product.image} 354w, images/responsive/${responsiveName} 480w, ${product.cardImage} 1254w`;
+    image.sizes = "(max-width: 41.99rem) calc(50vw - 1.5rem), (max-width: 75rem) 33vw, 24vw";
+  }
   image.alt = product.alt;
   image.width = 1254;
   image.height = 1254;
@@ -279,7 +284,13 @@ function productGallery(product, className = "") {
 
   const galleryImage = (variant, isThumbnail = false) => {
     const image = element("img", `product-gallery__image product-gallery__image--${variant}`);
-    image.src = gallerySources[variant];
+    image.src = isThumbnail
+      ? `images/responsive/${slug}-${["front", "top", "three-quarter"][variant]}-640.png`
+      : gallerySources[variant];
+    if (!isThumbnail) {
+      image.srcset = `images/responsive/${slug}-${["front", "top", "three-quarter"][variant]}-640.png 640w, ${gallerySources[variant]} 1254w`;
+      image.sizes = "(max-width: 55.99rem) calc(100vw - 2rem), 48vw";
+    }
     image.alt = isThumbnail ? "" : `${product.alt}, ${angleLabels[variant]}`;
     image.width = 1254;
     image.height = 1254;

@@ -209,6 +209,25 @@ export const formatPrice = (value) => new Intl.NumberFormat("ru-RU", {
   maximumFractionDigits: 0
 }).format(value);
 
+export function calculateDiscount(price, discountPercent) {
+  const safePrice = Math.max(0, Number(price) || 0);
+  const safePercent = Math.min(100, Math.max(0, Number(discountPercent) || 0));
+  return Math.round(safePrice - (safePrice * safePercent) / 100);
+}
+
+export function getProductStatus(product) {
+  const stock = Number(product.stock ?? (product.available ? 1 : 0));
+  if (!product.available || stock <= 0) return "Нет в наличии";
+  if (stock < 5) return "Заканчивается";
+  return "В наличии";
+}
+
+export function createShortDescription(product, maxLength = 90) {
+  const text = `${product.name} — ${product.description}`.trim();
+  const limit = Math.max(24, Number(maxLength) || 90);
+  return text.length > limit ? `${text.slice(0, limit - 1).trimEnd()}…` : text;
+}
+
 export function getProduct(id) {
   return products.find((product) => product.id === Number(id));
 }

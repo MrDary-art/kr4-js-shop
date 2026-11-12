@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Как флористы Флоры подбирают свежие цветы, собирают, проверяют и передают букеты в день заказа.">
+  <meta name="theme-color" content="#FFE6F0">
+  <title>О флористике — Флора</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Prata&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <script>document.documentElement.classList.add('js')</script>
+  <script type="module" src="js/main.js"></script>
+</head>
+<body data-page="about">
+  <a class="skip-link" href="#main-content">К основному содержанию</a>
+  <header class="site-header" data-header>
+    <a class="brand" href="index.html" aria-label="Флора, главная">флора</a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Меню</button>
+    <nav class="site-nav" id="site-nav" aria-label="Основная навигация">
+      <a href="index.html">Главная</a><a href="catalog.html">Каталог</a><a href="saved.html">Избранное</a><a aria-current="page" href="about.html">О флористике</a><a href="contacts.html">Контакты</a>
+    </nav>
+    <a class="cart-link" href="bag.html" aria-label="Корзина, 0 товаров"><svg class="cart-link__icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M3 4h2l2.1 10.1a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.6L20.5 7H6M9.5 20a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5ZM17 20a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z"/></svg><span class="cart-count" data-cart-count aria-hidden="true">0</span></a>
+  </header>
+
+  <main id="main-content">
+    <section class="floristry-hero" aria-labelledby="floristry-title">
+      <div class="floristry-hero__copy">
+        <h1 id="floristry-title" class="floristry-title-lines">
+          <span class="floristry-title-lines__mask"><span class="floristry-title-lines__line">Искусство</span></span>
+          <span class="floristry-title-lines__mask"><span class="floristry-title-lines__line">флористики</span></span>
+        </h1>
+        <div class="floristry-hero__story" data-reveal>
+          <p>История «Флоры» началась с небольшой мастерской на Цветном бульваре. Первые букеты здесь собирали для друзей и соседей — не по готовому шаблону, а под характер человека и смысл события.</p>
+          <p>Со временем этот подход стал основой нашей флористики: сезонные цветы, спокойная палитра и свободная форма, собранная вручную в день заказа.</p>
+        </div>
+        <p class="floristry-hero__place" data-reveal data-reveal-delay="70">Цветной бульвар, 15 · ежедневно 09:00–21:00</p>
+        <div class="floristry-hero__actions" data-reveal data-reveal-delay="140">
+          <a class="button button--primary" href="catalog.html">Выбрать букет</a>
+          <a class="floristry-text-link" href="#floristry-process">Как мы собираем</a>
+        </div>
+      </div>
+      <div class="floristry-hero__visual">
+        <figure class="floristry-hero__media">
+          <img src="images/atelier-spring-bouquet.png" srcset="images/responsive/atelier-spring-bouquet-480.png 480w, images/atelier-spring-bouquet.png 1159w" sizes="(max-width: 55.99rem) 92vw, 52vw" width="1159" height="1358" decoding="async" alt="Весенний букет из ранункулюсов, эустомы, дельфиниума и тюльпанов">
+        </figure>
+      </div>
+    </section>
+
+    <section class="floristry-process" id="floristry-process" aria-label="Как создаётся букет" data-floristry-process>
+      <div class="floristry-process__layout">
+        <div class="floristry-process__index">
+          <button class="floristry-stage" type="button" aria-pressed="true" aria-controls="process-preview" data-process-step data-process-src="images/delivery-step-select.png" data-process-alt="Флорист выбирает свежие цветы и сравнивает оттенки">
+            <span class="floristry-stage__title">Подбираем</span>
+            <span class="floristry-stage__text">Проверяем свежесть цветов и собираем палитру под ваш повод.</span>
+            <img class="floristry-stage__mobile-image" src="images/delivery-step-select.png" width="1536" height="1024" loading="lazy" decoding="async" alt="">
+          </button>
+          <button class="floristry-stage" type="button" aria-pressed="false" aria-controls="process-preview" data-process-step data-process-src="images/delivery-step-assemble.png" data-process-alt="Флорист собирает цветы по спирали">
+            <span class="floristry-stage__title">Собираем</span>
+            <span class="floristry-stage__text">Выстраиваем форму, сохраняем объём и закрепляем каждый стебель.</span>
+            <img class="floristry-stage__mobile-image" src="images/delivery-step-assemble.png" width="1536" height="1024" loading="lazy" decoding="async" alt="">
+          </button>
+          <button class="floristry-stage" type="button" aria-pressed="false" aria-controls="process-preview" data-process-step data-process-src="images/delivery-step-check.png" data-process-alt="Готовый букет проходит проверку перед отправкой">
+            <span class="floristry-stage__title">Проверяем</span>
+            <span class="floristry-stage__text">Сверяем состав, оттенки и упаковку перед передачей курьеру.</span>
+            <img class="floristry-stage__mobile-image" src="images/delivery-step-check.png" width="1536" height="1024" loading="lazy" decoding="async" alt="">
+          </button>
+          <button class="floristry-stage" type="button" aria-pressed="false" aria-controls="process-preview" data-process-step data-process-src="images/delivery-step-handoff.png" data-process-alt="Флорист передаёт упакованный букет курьеру">
+            <span class="floristry-stage__title">Передаём</span>
+            <span class="floristry-stage__text">Защищаем композицию для дороги и передаём её в выбранный интервал.</span>
+            <img class="floristry-stage__mobile-image" src="images/delivery-step-handoff.png" width="1536" height="1024" loading="lazy" decoding="async" alt="">
+          </button>
+        </div>
+        <figure class="floristry-process__preview" id="process-preview">
+          <div class="floristry-process__preview-frame">
+            <img src="images/delivery-step-select.png" width="1536" height="1024" loading="lazy" decoding="async" alt="Флорист выбирает свежие цветы и сравнивает оттенки" data-process-preview>
+          </div>
+        </figure>
+      </div>
+    </section>
+
+    <section class="floristry-standards" aria-labelledby="standards-title">
+      <div class="floristry-standards__intro" data-reveal>
+        <h2 id="standards-title">Сохраняем характер</h2>
+        <p>Композиция может меняться вместе с сезоном, но её палитра, размер и настроение остаются узнаваемыми.</p>
+      </div>
+      <dl>
+        <div data-reveal><dt>Состав виден заранее</dt><dd>Основные цветы и зелень указаны в карточке композиции до заказа.</dd></div>
+        <div data-reveal data-reveal-delay="70"><dt>Замены согласуем</dt><dd>Если точного цветка нет, сохраняем выбранную палитру, размер и общее настроение букета.</dd></div>
+        <div data-reveal data-reveal-delay="140"><dt>Открытку подпишем</dt><dd>Добавим ваши слова к букету без доплаты и передадим вместе с композицией.</dd></div>
+      </dl>
+    </section>
+
+    <section class="floristry-mood" aria-labelledby="mood-title" data-floristry-mood>
+      <figure class="floristry-mood__media" data-reveal>
+        <img src="images/bouquet-pink-peony-hq.png" width="1536" height="1536" loading="lazy" decoding="async" alt="Нежный розовый букет пионов" data-mood-image>
+      </figure>
+      <div class="floristry-mood__copy" data-reveal data-reveal-delay="100">
+        <h2 id="mood-title">Выберите настроение</h2>
+        <p>Мы покажем букеты с подходящим характером и палитрой.</p>
+        <div class="floristry-mood__choices">
+          <button type="button" data-mood="gentle" aria-pressed="true">Нежный</button>
+          <button type="button" data-mood="vivid" aria-pressed="false">Яркий</button>
+          <button type="button" data-mood="airy" aria-pressed="false">Воздушный</button>
+        </div>
+        <p class="floristry-mood__result" data-mood-text>Пудровые оттенки, округлые формы и мягкие переходы цвета.</p>
+        <a class="button button--primary" href="catalog.html?occasion=date" data-mood-link>Смотреть подборку</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer site-footer--unified">
+    <div class="site-footer__grid">
+      <div class="site-footer__identity"><a class="brand brand--footer" href="index.html">Флора</a><p>Цветы к важному дню. Помогаем выбрать букет по настроению, поводу и бюджету.</p></div>
+      <nav class="site-footer__section" aria-label="Навигация в подвале"><h2 class="site-footer__heading">Навигация</h2><a href="index.html" data-footer-page="home">Главная</a><a href="catalog.html" data-footer-page="catalog">Каталог</a><a href="saved.html" data-footer-page="favorites">Избранное</a><a aria-current="page" href="about.html" data-footer-page="about">О флористике</a></nav>
+      <div class="site-footer__section site-footer__contact"><h2 class="site-footer__heading">Связаться</h2><a class="site-footer__item" href="tel:+74951283024"><svg class="site-footer__icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.69 2.8a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.33 1.85.56 2.81.69A2 2 0 0 1 22 16.92Z"/></svg><span>+7 495 128-30-24</span></a><span class="site-footer__item"><svg class="site-footer__icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Ежедневно 09:00–21:00</span></span><a class="site-footer__item" href="mailto:hello@flora-shop.ru"><svg class="site-footer__icon" aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><span>hello@flora-shop.ru</span></a></div>
+      <address class="site-footer__section site-footer__address"><h2 class="site-footer__heading">Флора в Москве</h2><span class="site-footer__item"><svg class="site-footer__icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg><span class="site-footer__address-copy"><a href="https://yandex.ru/maps" rel="noopener" target="_blank">Цветной бульвар, 15</a><span>Москва, 127051</span></span></span><a class="site-footer__cta" href="bag.html">Перейти в корзину</a></address>
+    </div>
+    <div class="site-footer__bottom"><p>© <span data-current-year>2026</span> Флора. Все права защищены.</p></div>
+  </footer>
+  <button class="scroll-top" type="button" data-scroll-top aria-label="Вернуться наверх"><span aria-hidden="true">↑</span></button>
+  <div class="toast" role="status" aria-live="polite" aria-atomic="true" hidden data-toast></div>
+</body>
+</html>

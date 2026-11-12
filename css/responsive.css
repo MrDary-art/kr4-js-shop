@@ -53,8 +53,8 @@
   .hero__wordmark { top: 33%; left: 18%; font-size: clamp(12rem, 23vw, 24rem); }
 
   .featured { grid-template-columns: 1.05fr .95fr; }
-  .featured__visual { min-height: 0; }
-  .featured__copy { align-content: center; min-height: 0; padding-block: 1.35rem; }
+  .featured__visual { min-height: 48rem; }
+  .featured__copy { align-content: space-between; min-height: 48rem; }
 
   .occasion-index__title { grid-template-columns: 1fr .75fr; align-items: end; }
   .occasion-index__rows a { grid-template-columns: auto minmax(14rem, .65fr) 1fr; padding-block: 1.45rem; }
@@ -136,20 +136,19 @@
   .atelier__facts { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .reviews__grid .review-card:last-child { max-width: none; justify-self: auto; }
   .review-card { flex-basis: min(46vw, 23rem); }
-  .site-footer__grid { grid-template-columns: 1.3fr 1fr; column-gap: 3rem; }
+  .site-footer--unified .site-footer__grid { grid-template-columns: minmax(16rem, 1.2fr) minmax(12rem, .8fr); column-gap: clamp(2.5rem, 6vw, 5rem); }
 }
 
 @media (min-width: 56rem) {
   .hero { min-height: 100svh; padding-top: 8rem; padding-bottom: 0; }
   .hero__content { align-self: center; padding-bottom: clamp(1.5rem, 4vh, 3.5rem); }
-  .hero__photo { align-self: center; justify-self: center; width: auto; height: min(83svh, 50rem); margin: -1rem -1.5rem 1rem -1rem; }
+  .hero__photo { align-self: end; width: auto; height: min(86svh, 52rem); margin: 0 -2rem -1rem -1rem; }
   .hero__photo picture, .hero__photo img { width: auto; height: 100%; }
   .hero::before { top: 12%; right: 2%; width: min(48vw, 46rem); }
-  .featured { grid-template-columns: minmax(24rem, .86fr) minmax(0, 1.14fr); min-height: 0; }
-  .featured__visual { min-height: 0; }
-  .featured__visual img { width: auto; max-width: 108%; height: min(39rem, 98%); max-height: 98%; }
+  .featured { grid-template-columns: minmax(24rem, .86fr) minmax(0, 1.14fr); }
+  .featured__visual { min-height: clamp(28rem, 54svh, 32rem); }
   .featured__visual::before { bottom: 13%; }
-  .featured__copy { min-height: 0; align-content: center; padding-block: 1.25rem; }
+  .featured__copy { min-height: clamp(28rem, 54svh, 32rem); align-content: center; padding-block: clamp(1.75rem, 3vw, 2.75rem); }
   .mood-picker__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .mood-picker__grid a:last-child { grid-column: auto; }
   .atelier { grid-template-columns: 1.12fr .88fr; }
@@ -159,7 +158,11 @@
   .review-card { flex-basis: calc((100% - 2.4rem) / 3); }
   .faq__media { min-height: 42rem; }
   .faq__bouquet { max-height: 40rem; }
-  .site-footer__grid { grid-template-columns: 1.3fr 1.25fr .7fr .8fr; align-items: start; }
+}
+
+@media (min-width: 64rem) {
+  .site-footer--unified .site-footer__grid { grid-template-columns: minmax(16rem, 1.25fr) minmax(9rem, .7fr) minmax(13rem, .9fr) minmax(15rem, 1fr); align-items: start; column-gap: clamp(2rem, 4vw, 4.5rem); }
+  .site-footer--unified .site-footer__section { justify-items: center; text-align: center; }
 }
 
 .featured__visual::before {
@@ -402,8 +405,6 @@ body[data-page="contacts"] main {
 .breadcrumbs {
   position: relative;
   z-index: 2;
-  padding-top: clamp(2rem, 4vw, 3.5rem);
-  background: linear-gradient(90deg, #fffdf9, rgba(255, 242, 246, .74), #fffdf9);
 }
 
 .related-products {
@@ -1260,8 +1261,8 @@ body[data-page="favorites"] .favorites-intro::before {
 }
 
 @media (max-width: 41.99rem) {
-  body[data-page="favorites"] .favorites-intro { min-height: 100svh; padding-top: 6.5rem; padding-bottom: 2.5rem; }
-  .favorites-intro__ornament { width: min(88vw, 24rem); margin-top: -1.5rem; }
+  body[data-page="favorites"] .favorites-intro { min-height: 100svh; padding-top: 6.5rem; padding-bottom: 2.5rem; overflow: clip; }
+  .favorites-intro__ornament { width: min(calc(100vw - 3rem), 24rem); margin-top: -1.5rem; }
   .favorites-intro__ornament img { height: min(44svh, 23.5rem); }
   .favorites-intro__ornament span { margin-top: -1.2rem; font-size: clamp(7.5rem, 31vw, 10.5rem); }
   .favorites-page .product-grid > .product-card:first-child .product-card__media { aspect-ratio: 4 / 5; }
@@ -1360,14 +1361,16 @@ body[data-page="order"] .order-form textarea:focus { box-shadow: 0 0 0 .28rem rg
 body[data-page="order"] .order-form > .order-form__grid:last-of-type { margin-bottom: .9rem; }
 body[data-page="order"] .consent { align-items: center; margin: .65rem 0 .2rem; }
 body[data-page="order"] .consent input[type="checkbox"] {
-  width: 1.25rem;
-  min-height: 1.25rem;
-  height: 1.25rem;
+  width: 1.5rem;
+  min-height: 1.5rem;
+  height: 1.5rem;
   margin: 0;
   accent-color: var(--garnet);
 }
 body[data-page="order"] .consent + .field-error { margin-left: 1.95rem; }
 body[data-page="order"] .form-message:empty { min-height: 0; margin: 0; }
+body[data-page="order"] .form-message.is-error { color: var(--danger); font-weight: 700; }
+body[data-page="order"] .button:disabled { cursor: wait; opacity: .68; }
 
 body[data-page="order"] .order-form > h2 { position: relative; z-index: 0; }
 body[data-page="order"] .order-form__grid { position: relative; z-index: 1; }
@@ -2205,4 +2208,352 @@ body[data-page="cart"] .cart-summary {
 @media (prefers-reduced-transparency: reduce) {
   .cart-hero__glass { background: #5f1425; backdrop-filter: none; }
   body[data-page="cart"] .cart-items { background: var(--paper-bright); backdrop-filter: none; }
+}
+
+/* Floristry — the atelier's day-of ritual as a pinned editorial story. */
+body[data-page="about"] main { background: var(--paper-bright); }
+body[data-page="about"] .breadcrumbs { background: var(--paper); }
+body[data-page="about"] .breadcrumbs ol { background: var(--paper-bright); box-shadow: none; backdrop-filter: none; -webkit-backdrop-filter: none; }
+
+.floristry-hero,
+.floristry-process,
+.floristry-standards,
+.floristry-mood {
+  width: min(100%, var(--max));
+  margin-inline: auto;
+}
+
+.floristry-hero {
+  display: grid;
+  min-height: calc(100svh - var(--header-offset) - 4.35rem);
+  background: var(--blush);
+}
+
+.floristry-hero__copy {
+  display: grid;
+  align-content: center;
+  justify-items: start;
+  padding: clamp(3rem, 8vw, 8rem) var(--gutter);
+}
+
+.floristry-hero__copy h1 {
+  max-width: 8ch;
+  margin-bottom: 1.5rem;
+  color: var(--garnet);
+  font-size: clamp(3.8rem, 8vw, 8rem);
+  line-height: .92;
+  letter-spacing: -.035em;
+  text-wrap: balance;
+}
+
+.floristry-hero__copy p { max-width: 35rem; margin-bottom: 1.5rem; color: var(--ink); font-size: clamp(1rem, 1.5vw, 1.15rem); }
+.floristry-hero__media { min-height: 34rem; margin: 0; background: var(--paper); overflow: hidden; }
+.floristry-hero__media img { width: 100%; height: 100%; object-fit: contain; object-position: center bottom; }
+
+.floristry-process { display: grid; align-items: start; background: var(--paper-bright); }
+.floristry-process__intro { padding: clamp(5rem, 10vw, 9rem) var(--gutter) 3rem; }
+.floristry-process__intro h2 { max-width: 7ch; margin-bottom: 1.5rem; color: var(--garnet); font-size: clamp(3.4rem, 7vw, 7rem); line-height: .92; letter-spacing: -.035em; }
+.floristry-process__intro p { max-width: 28rem; margin: 0; color: var(--ink); }
+.floristry-process__stages { min-width: 0; }
+
+.floristry-stage { position: relative; min-height: 62svh; margin: 0; overflow: hidden; background: var(--garnet); color: var(--paper-bright); isolation: isolate; }
+.floristry-stage::after { position: absolute; inset: 0; z-index: -1; background: rgba(42, 23, 25, .28); content: ""; }
+.floristry-stage img { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; }
+.floristry-stage h3 { position: absolute; top: 50%; left: 50%; width: 100%; margin: 0; color: var(--paper-bright); font-family: var(--font-display); font-size: clamp(4.2rem, 9vw, 8.5rem); font-weight: 400; line-height: .9; letter-spacing: -.035em; text-align: center; transform: translate(-50%, -50%); }
+.floristry-stage p { position: absolute; right: var(--gutter); bottom: var(--gutter); left: var(--gutter); max-width: 32rem; margin: 0; padding: .85rem 1rem; background: rgba(78, 10, 11, .82); color: var(--paper-bright); }
+
+.floristry-standards { display: grid; gap: clamp(3rem, 8vw, 8rem); padding: clamp(5rem, 10vw, 9rem) var(--gutter); background: var(--garnet); color: var(--paper-bright); }
+.floristry-standards h2 { max-width: 8ch; margin: 0; color: var(--paper-bright); font-size: clamp(3.2rem, 7vw, 6.4rem); line-height: .95; letter-spacing: -.035em; }
+.floristry-standards dl { display: grid; gap: .75rem; margin: 0; }
+.floristry-standards dl > div { padding: 1.35rem; background: rgba(255, 253, 249, .1); }
+.floristry-standards dt { margin-bottom: .4rem; color: var(--petal); font-weight: 700; }
+.floristry-standards dd { max-width: 44rem; margin: 0; color: rgba(255, 253, 249, .86); }
+
+.floristry-mood { display: grid; min-height: 45rem; background: var(--paper); }
+.floristry-mood__media { display: grid; place-items: center; min-height: 34rem; margin: 0; padding: clamp(1rem, 4vw, 3rem); background: #e8eed9; overflow: hidden; }
+.floristry-mood__media img { width: min(100%, 38rem); height: 100%; max-height: 42rem; object-fit: contain; transition: opacity 220ms ease, transform 500ms var(--ease-out); }
+.floristry-mood__copy { display: grid; align-content: center; justify-items: start; padding: clamp(3rem, 8vw, 7rem) var(--gutter); }
+.floristry-mood__copy h2 { max-width: 8ch; margin-bottom: 1.2rem; color: var(--garnet); font-size: clamp(3rem, 6vw, 5.8rem); line-height: .95; letter-spacing: -.035em; }
+.floristry-mood__copy > p { max-width: 34rem; color: var(--ink); }
+.floristry-mood__choices { display: flex; flex-wrap: wrap; gap: .55rem; margin: .65rem 0 1.25rem; }
+.floristry-mood__choices button { min-height: 2.75rem; padding: .7rem 1rem; border: 0; border-radius: 999px; background: var(--blush); color: var(--garnet); font-weight: 700; transition: background-color 160ms ease, color 160ms ease, transform 140ms var(--ease-out); }
+.floristry-mood__choices button[aria-pressed="true"] { background: var(--garnet); color: var(--paper-bright); }
+.floristry-mood__result { min-height: 3.2rem; margin-bottom: 1.35rem; }
+
+@media (min-width: 56rem) {
+  .floristry-hero { grid-template-columns: minmax(0, .88fr) minmax(0, 1.12fr); }
+  .floristry-process { grid-template-columns: minmax(22rem, .72fr) minmax(0, 1.28fr); }
+  .floristry-process__intro { position: sticky; top: var(--header-offset); display: grid; align-content: center; min-height: calc(100svh - var(--header-offset)); }
+  .floristry-standards { grid-template-columns: minmax(20rem, .9fr) minmax(0, 1.1fr); align-items: start; }
+  .floristry-mood { grid-template-columns: minmax(0, 1.08fr) minmax(24rem, .92fr); }
+  .floristry-stage { min-height: 56svh; }
+}
+
+@media (max-width: 55.99rem) {
+  .floristry-hero__copy h1 { max-width: 9ch; }
+  .floristry-process__intro { padding-bottom: clamp(4rem, 8vw, 6rem); }
+  .floristry-stage { min-height: 68svh; }
+}
+
+@media (max-width: 41.99rem) {
+  .floristry-hero { min-height: auto; }
+  .floristry-hero__copy { min-height: 27rem; }
+  .floristry-hero__copy h1 { font-size: clamp(3.2rem, 15vw, 4.35rem); }
+  .floristry-hero__media { min-height: 31rem; }
+  .floristry-process__intro h2 { font-size: clamp(3.1rem, 14vw, 4.5rem); }
+  .floristry-stage { min-height: 72svh; }
+  .floristry-stage h3 { font-size: clamp(3.6rem, 17vw, 5rem); }
+  .floristry-stage p { right: 1rem; bottom: 1rem; left: 1rem; font-size: .9rem; }
+  .floristry-standards { gap: 2.5rem; }
+  .floristry-standards h2 { font-size: clamp(3rem, 13.5vw, 4.2rem); }
+  .floristry-mood { min-height: auto; }
+  .floristry-mood__media { min-height: 28rem; }
+  .floristry-mood__copy h2 { font-size: clamp(3rem, 13vw, 4rem); }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .floristry-mood__choices button:hover { background: var(--petal); transform: translateY(-1px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .floristry-mood__media img,
+  .floristry-mood__choices button { transition: none; }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .floristry-stage img { animation: floristry-image-drift linear both; animation-timeline: view(); animation-range: entry 0% exit 100%; }
+    @keyframes floristry-image-drift { from { transform: translateY(-3%) scale(1.08); } to { transform: translateY(3%) scale(1.08); } }
+  }
+}
+
+/* Floristry — Flora's wrapping paper unfolds into the atelier story. */
+body[data-page="about"] main {
+  background:
+    radial-gradient(ellipse 48% 24% at 8% 24%, rgba(234, 156, 175, .3), transparent 72%),
+    radial-gradient(ellipse 42% 28% at 94% 52%, rgba(194, 220, 128, .24), transparent 74%),
+    linear-gradient(180deg, #fff9fa 0%, #f8e8ed 52%, #f2eee8 100%); /* taste-skill-ignore: user explicitly requested the established Flora gradient language */
+}
+
+body[data-page="about"] .breadcrumbs {
+  background:
+    radial-gradient(circle at 14% 50%, rgba(234, 156, 175, .2), transparent 30%),
+    linear-gradient(90deg, #fff8fa, rgba(255, 253, 249, .86) 54%, #f4f3e9); /* taste-skill-ignore: matches the shared section breadcrumb treatment */
+}
+
+body[data-page="about"] .breadcrumbs ol {
+  background: rgba(255, 253, 249, .76);
+  box-shadow: 0 .65rem 2rem rgba(78, 10, 11, .08);
+  backdrop-filter: blur(14px) saturate(1.05);
+  -webkit-backdrop-filter: blur(14px) saturate(1.05);
+}
+
+.floristry-hero,
+.floristry-process,
+.floristry-standards,
+.floristry-mood {
+  position: relative;
+  width: min(100%, var(--max));
+  margin-inline: auto;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.floristry-hero {
+  display: grid;
+  min-height: calc(100svh - var(--header-offset) - 4.35rem);
+  background:
+    radial-gradient(ellipse 46% 70% at 82% 26%, rgba(194, 220, 128, .54), transparent 72%),
+    radial-gradient(ellipse 36% 70% at 10% 94%, rgba(213, 105, 137, .34), transparent 70%),
+    linear-gradient(126deg, #ffe6ef 0%, #fff7f8 48%, #e9efdc 76%, #ca8294 100%); /* taste-skill-ignore: user explicitly requested a soft floral gradient */
+}
+
+.floristry-hero__copy {
+  position: relative;
+  z-index: 3;
+  display: grid;
+  align-content: center;
+  justify-items: start;
+  padding: clamp(4rem, 9vw, 8.5rem) var(--gutter);
+}
+
+.floristry-hero__copy .floristry-title-lines {
+  position: relative;
+  z-index: 4;
+  max-width: 11ch;
+  margin: 0 0 1.55rem;
+  color: var(--garnet);
+  font-size: clamp(3.4rem, 5.3vw, 6rem);
+  line-height: .94;
+  letter-spacing: -.035em;
+  text-wrap: balance;
+}
+
+.floristry-title-lines__mask { display: block; overflow: visible; padding-bottom: .08em; margin-bottom: -.08em; }
+.floristry-title-lines__line { display: block; }
+.floristry-hero__story { display: grid; gap: .65rem; max-width: 36rem; margin: 0 0 1.15rem; }
+.floristry-hero__story p { margin: 0; color: var(--ink); font-size: clamp(.96rem, 1.2vw, 1.08rem); line-height: 1.65; }
+.floristry-hero__place { margin: 0 0 1.5rem; color: rgba(78, 10, 11, .7); font-size: .94rem; font-weight: 600; }
+.floristry-hero__actions { display: flex; flex-wrap: wrap; align-items: center; gap: .8rem 1.2rem; }
+.floristry-text-link { color: var(--garnet); font-weight: 700; text-decoration: underline; text-decoration-color: transparent; text-underline-offset: .28em; text-decoration-thickness: .08em; transition: text-decoration-color 180ms ease; }
+
+.floristry-hero__visual {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  place-items: end center;
+  min-height: 38rem;
+  padding: clamp(1rem, 3vw, 2.5rem) var(--gutter) 0;
+}
+
+.floristry-hero__media { position: relative; z-index: 2; display: grid; place-items: end center; width: min(98%, 50rem); min-height: 38rem; margin: 0; background: transparent; overflow: visible; }
+.floristry-hero__media img { width: min(100%, 44rem); height: 100%; max-height: 48rem; object-fit: contain; object-position: center bottom; filter: drop-shadow(0 1.6rem 1.4rem rgba(78, 10, 11, .2)); }
+
+.floristry-process {
+  display: block;
+  padding: clamp(1.25rem, 2.5vw, 2.5rem) var(--gutter) clamp(3rem, 6vw, 5.5rem);
+  background:
+    radial-gradient(ellipse 54% 50% at 8% 8%, rgba(255, 255, 255, .78), transparent 72%),
+    radial-gradient(ellipse 48% 54% at 96% 88%, rgba(194, 220, 128, .34), transparent 74%),
+    linear-gradient(136deg, #fff8f9 0%, #f6d9e2 54%, #e6ecd5 100%); /* taste-skill-ignore: user explicitly requested a continuous soft gradient */
+}
+
+.floristry-process__layout { display: grid; gap: clamp(1.5rem, 3.5vw, 3.5rem); align-items: start; }
+.floristry-process__index { display: grid; gap: .55rem; }
+
+.floristry-stage {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) clamp(7.25rem, 9vw, 9rem);
+  column-gap: 1rem;
+  align-items: center;
+  min-height: 0;
+  margin: 0;
+  padding: clamp(.9rem, 1.3vw, 1.2rem);
+  border: 0;
+  border-radius: 1.4rem;
+  background: rgba(255, 253, 249, .48);
+  color: var(--garnet);
+  text-align: left;
+  overflow: hidden;
+  isolation: isolate;
+  cursor: pointer;
+  transition: background-color 180ms ease, color 180ms ease, transform 160ms var(--ease-out), opacity 180ms ease;
+  animation: none;
+}
+
+.floristry-stage::after { display: none; }
+.floristry-stage[aria-pressed="true"] { background: var(--garnet); color: var(--paper-bright); }
+.floristry-stage__title { display: block; grid-column: 1; font-family: var(--font-display); font-size: clamp(1.9rem, 2.6vw, 2.8rem); line-height: 1; letter-spacing: -.025em; }
+.floristry-stage__text { display: block; grid-column: 1; max-width: 34rem; margin-top: .4rem; color: currentColor; font-size: .88rem; line-height: 1.45; opacity: .82; }
+.floristry-stage .floristry-stage__mobile-image { position: static; z-index: 1; display: block; grid-column: 2; grid-row: 1 / span 2; width: 100%; height: auto; aspect-ratio: 1; margin: 0; border-radius: 1rem; object-fit: cover; animation: none; }
+
+.floristry-process__preview { margin: 0; }
+.floristry-process__preview-frame { aspect-ratio: 5 / 6; border-radius: 2.5rem 2.5rem 2.5rem .6rem; background: var(--blush); overflow: hidden; }
+.floristry-process__preview img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+
+.floristry-standards {
+  display: grid;
+  gap: clamp(3rem, 8vw, 8rem);
+  padding: clamp(6rem, 10vw, 10rem) var(--gutter);
+  background:
+    radial-gradient(ellipse 40% 65% at 10% 30%, rgba(213, 105, 137, .28), transparent 72%),
+    radial-gradient(ellipse 36% 58% at 92% 90%, rgba(194, 220, 128, .16), transparent 74%),
+    linear-gradient(116deg, #7b263a 0%, #5d1424 46%, #3d0b10 100%); /* taste-skill-ignore: user explicitly requested the established burgundy gradient */
+  color: var(--paper-bright);
+}
+
+.floristry-standards__intro { position: relative; z-index: 1; }
+.floristry-standards h2 { max-width: 8ch; margin: 0 0 1.4rem; color: var(--paper-bright); font-size: clamp(3.4rem, 7vw, 6.8rem); line-height: .92; letter-spacing: -.035em; }
+.floristry-standards__intro p { max-width: 31rem; margin: 0; color: rgba(255, 253, 249, .8); }
+.floristry-standards dl { position: relative; z-index: 1; display: grid; gap: 0; margin: 0; }
+.floristry-standards dl > div { display: grid; gap: .55rem; padding: 1.55rem 0; background: transparent; }
+.floristry-standards dt { margin: 0; color: var(--petal); font-family: var(--font-display); font-size: clamp(1.65rem, 2.4vw, 2.4rem); font-weight: 400; line-height: 1.1; }
+.floristry-standards dd { max-width: 42rem; margin: 0; color: rgba(255, 253, 249, .85); font-size: 1rem; }
+
+.floristry-mood {
+  display: grid;
+  min-height: 48rem;
+  background:
+    radial-gradient(ellipse 52% 76% at 20% 52%, rgba(255, 253, 249, .92), transparent 66%),
+    radial-gradient(ellipse 42% 68% at 88% 18%, rgba(194, 220, 128, .38), transparent 72%),
+    linear-gradient(122deg, #f4d8e1 0%, #fff6f7 56%, #e2e9d2 100%); /* taste-skill-ignore: user explicitly requested the established floral gradient */
+}
+
+.floristry-mood__media { position: relative; z-index: 1; display: grid; place-items: center; min-height: 36rem; margin: 0; padding: clamp(1.5rem, 5vw, 4rem); background: transparent; overflow: hidden; }
+.floristry-mood__media::before { position: absolute; inset: 15% 14%; z-index: -1; border-radius: 50%; background: rgba(213, 105, 137, .2); filter: blur(34px); content: ""; }
+.floristry-mood__media img { width: min(100%, 40rem); height: 100%; max-height: 43rem; object-fit: contain; filter: drop-shadow(0 1.5rem 1.3rem rgba(78, 10, 11, .2)); transition: opacity 220ms ease, transform 500ms var(--ease-out); }
+.floristry-mood__copy { position: relative; z-index: 2; display: grid; align-content: center; justify-items: start; padding: clamp(3rem, 8vw, 7rem) var(--gutter); }
+.floristry-mood__copy h2 { max-width: 8ch; margin-bottom: 1.2rem; color: var(--garnet); font-size: clamp(3.2rem, 6vw, 6rem); line-height: .94; letter-spacing: -.035em; }
+.floristry-mood__copy > p { max-width: 34rem; color: var(--ink); }
+.floristry-mood__choices { display: flex; flex-wrap: wrap; gap: .55rem; margin: .65rem 0 1.25rem; }
+.floristry-mood__choices button { min-height: 2.75rem; padding: .7rem 1rem; border: 0; border-radius: 999px; background: rgba(255, 253, 249, .7); color: var(--garnet); font-weight: 700; transition: background-color 160ms ease, color 160ms ease, transform 140ms var(--ease-out); }
+.floristry-mood__choices button[aria-pressed="true"] { background: var(--garnet); color: var(--paper-bright); }
+.floristry-mood__result { min-height: 3.2rem; margin-bottom: 1.35rem; }
+
+@media (min-width: 56rem) {
+  .floristry-hero { grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr); }
+  .floristry-process__layout { grid-template-columns: minmax(22rem, .86fr) minmax(28rem, 1.14fr); align-items: stretch; }
+  .floristry-process__index { grid-template-rows: repeat(4, minmax(0, 1fr)); }
+  .floristry-process__preview { min-height: 0; }
+  .floristry-process__preview-frame { height: 100%; aspect-ratio: auto; }
+  .floristry-standards { grid-template-columns: minmax(20rem, .88fr) minmax(0, 1.12fr); align-items: start; }
+  .floristry-mood { grid-template-columns: minmax(0, 1.08fr) minmax(24rem, .92fr); }
+}
+
+@media (max-width: 55.99rem) {
+  .floristry-hero { min-height: auto; }
+  .floristry-hero__copy { min-height: 34rem; }
+  .floristry-hero__visual { min-height: 37rem; }
+  .floristry-process__layout { gap: 1.5rem; }
+  .floristry-process__index { gap: .65rem; }
+  .floristry-process__preview { position: static; }
+  .floristry-process__preview-frame { aspect-ratio: 4 / 3; border-radius: 1.5rem 1.5rem 1.5rem .45rem; }
+  .floristry-stage { grid-template-columns: minmax(0, 1fr) 6.5rem; padding: 1rem; background: rgba(255, 253, 249, .64); }
+  .floristry-stage[aria-pressed="true"] { background: var(--garnet); color: var(--paper-bright); }
+  .floristry-stage .floristry-stage__mobile-image { grid-column: 2; grid-row: 1 / span 2; aspect-ratio: 1; margin: 0; }
+  .floristry-standards { gap: 3rem; }
+}
+
+@media (max-width: 41.99rem) {
+  .floristry-hero__copy { min-height: 27rem; padding-top: 4rem; padding-bottom: 2rem; }
+  .floristry-hero__copy .floristry-title-lines { max-width: 100%; font-size: clamp(3rem, 14vw, 4rem); }
+  .floristry-hero__place { max-width: 20rem; }
+  .floristry-hero__actions { align-items: flex-start; flex-direction: column; }
+  .floristry-hero__visual { min-height: 29rem; margin-top: -1.5rem; padding-inline: .5rem; }
+  .floristry-hero__media { min-height: 29rem; }
+  .floristry-hero__media img { max-height: 31rem; }
+  .floristry-process { padding-block: 1.5rem 4.5rem; }
+  .floristry-stage { grid-template-columns: minmax(0, 1fr) 5.5rem; column-gap: .85rem; padding: .85rem; }
+  .floristry-stage__title { font-size: clamp(1.85rem, 9vw, 2.55rem); }
+  .floristry-stage__text { margin-top: .35rem; font-size: .82rem; line-height: 1.4; }
+  .floristry-stage .floristry-stage__mobile-image { aspect-ratio: 1; border-radius: .8rem; }
+  .floristry-standards { padding-block: 5.5rem; }
+  .floristry-standards h2 { font-size: clamp(3.1rem, 14vw, 4.4rem); }
+  .floristry-mood { min-height: auto; }
+  .floristry-mood__media { min-height: 29rem; padding: 2.5rem 1rem 0; }
+  .floristry-mood__copy { padding-top: 3rem; padding-bottom: 5rem; }
+  .floristry-mood__copy h2 { font-size: clamp(3rem, 13vw, 4rem); }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .floristry-text-link:hover { text-decoration-color: currentColor; }
+  .floristry-stage:hover:not([aria-pressed="true"]) { background: rgba(255, 253, 249, .76); transform: translateX(.25rem); }
+  .floristry-mood__choices button:hover { background: var(--petal); transform: translateY(-1px); }
+}
+
+.floristry-stage:active,
+.floristry-mood__choices button:active,
+.floristry-hero__actions .button:active { transform: scale(.97); }
+
+@media (prefers-reduced-motion: reduce) {
+  .floristry-title-lines__line { animation: none; transform: none; transition: opacity 180ms ease; }
+  .floristry-stage,
+  .floristry-mood__media img,
+  .floristry-mood__choices button { transition: opacity 180ms ease, background-color 180ms ease, color 180ms ease; }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .floristry-stage,
+  body[data-page="about"] .breadcrumbs ol { background: var(--paper-bright); backdrop-filter: none; -webkit-backdrop-filter: none; }
 }

@@ -24,8 +24,11 @@ function validateField(form, field) {
   const message = rule(field.value, field);
   const error = errorElement(form, field.name);
   if (error) error.textContent = message;
-  field.setAttribute("aria-invalid", String(Boolean(message)));
-  if (error?.id) field.setAttribute("aria-describedby", error.id);
+  const accessibleControl = field.type === "hidden" && field.name === "date"
+    ? form.querySelector("[data-date-trigger]")
+    : field;
+  accessibleControl?.setAttribute("aria-invalid", String(Boolean(message)));
+  if (error?.id) accessibleControl?.setAttribute("aria-describedby", error.id);
   return message;
 }
 
@@ -50,7 +53,7 @@ function updateSummary(summary, list, errors) {
   errors.forEach(({ field, message }) => {
     const item = document.createElement("li");
     const link = document.createElement("a");
-    link.href = `#${field.id}`;
+    link.href = field.name === "date" ? "#delivery-date-trigger" : `#${field.id}`;
     link.textContent = message;
     item.append(link);
     list.append(item);

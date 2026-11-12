@@ -1,4 +1,11 @@
-import { products, formatPrice, getProduct } from "./data.js";
+import {
+  products,
+  calculateDiscount,
+  createShortDescription,
+  formatPrice,
+  getProduct,
+  getProductStatus
+} from "./data.js";
 import { filterAndSortProducts } from "./filters.js";
 import { initOrderValidation } from "./form.js";
 import {
@@ -22,6 +29,29 @@ import {
 } from "./store.js";
 
 let toastTimer;
+
+function logCourseworkExamples() {
+  const demoProduct = {
+    name: "Пионовый сад",
+    price: 5990,
+    discountPercent: 10,
+    available: true,
+    stock: 4,
+    description: "Объёмный букет розовых пионов с длинными атласными лентами."
+  };
+  const discountedPrice = calculateDiscount(demoProduct.price, demoProduct.discountPercent);
+
+  console.group("Флора: демонстрация типов, операторов и функций");
+  console.log("Объект товара:", demoProduct);
+  console.log("Строка:", demoProduct.name);
+  console.log("Число:", demoProduct.price);
+  console.log("Логическое значение:", demoProduct.available);
+  console.log("Цена:", formatPrice(demoProduct.price));
+  console.log("Цена со скидкой:", formatPrice(discountedPrice));
+  console.log("Статус:", getProductStatus(demoProduct));
+  console.log("Краткое описание:", createShortDescription(demoProduct, 72));
+  console.groupEnd();
+}
 
 function showToast(message) {
   const toast = document.querySelector("[data-toast]");
@@ -52,6 +82,23 @@ function initHeader() {
   const nav = header.querySelector(".site-nav");
   if (!toggle || !nav) return;
 
+  const links = [
+    { href: "index.html", label: "Главная", page: "home" },
+    { href: "catalog.html", label: "Каталог", page: "catalog" },
+    { href: "saved.html", label: "Избранное", page: "favorites" },
+    { href: "about.html", label: "О флористике", page: "about" },
+    { href: "contacts.html", label: "Контакты", page: "contacts" }
+  ];
+  const navFragment = document.createDocumentFragment();
+  links.forEach(({ href, label, page }) => {
+    const link = document.createElement("a");
+    link.href = href;
+    link.textContent = label;
+    if (page === document.body.dataset.page) link.setAttribute("aria-current", "page");
+    navFragment.append(link);
+  });
+  nav.replaceChildren(navFragment);
+
   const close = () => {
     header.classList.remove("is-open");
     toggle.setAttribute("aria-expanded", "false");
@@ -73,6 +120,93 @@ function initHeader() {
     }
   });
   document.addEventListener("pointerdown", () => document.documentElement.classList.remove("using-keyboard"));
+}
+
+function initBreadcrumbs() {
+  const main = document.querySelector("main");
+  const currentPage = document.body.dataset.page;
+  if (!main || currentPage === "home" || main.querySelector(".breadcrumbs")) return;
+
+  const productId = Number(new URLSearchParams(location.search).get("id")) || 3;
+  const product = currentPage === "product" ? getProduct(productId) : null;
+  const trails = {
+    catalog: [{ label: "Главная", href: "index.html" }, { label: "Каталог" }],
+    favorites: [{ label: "Главная", href: "index.html" }, { label: "Избранное" }],
+    about: [{ label: "Главная", href: "index.html" }, { label: "О флористике" }],
+    contacts: [{ label: "Главная", href: "index.html" }, { label: "Контакты" }],
+    cart: [{ label: "Главная", href: "index.html" }, { label: "Корзина" }],
+    order: [{ label: "Главная", href: "index.html" }, { label: "Корзина", href: "bag.html" }, { label: "Оформление заказа" }],
+    product: [{ label: "Главная", href: "index.html" }, { label: "Каталог", href: "catalog.html" }, { label: product?.name || "Букет" }]
+  };
+  const trail = trails[currentPage];
+  if (!trail) return;
+
+  const nav = document.createElement("nav");
+  nav.className = "breadcrumbs";
+  nav.setAttribute("aria-label", "Хлебные крошки");
+  const list = document.createElement("ol");
+
+  trail.forEach(({ label, href }, index) => {
+    const item = document.createElement("li");
+    const isCurrent = index === trail.length - 1;
+    const node = document.createElement(isCurrent ? "span" : "a");
+    node.textContent = label;
+    if (href && node instanceof HTMLAnchorElement) node.href = href;
+    if (isCurrent) {
+      node.setAttribute("aria-current", "page");
+      if (currentPage === "product") node.dataset.breadcrumbProduct = "";
+    }
+    item.append(node);
+    list.append(item);
+  });
+
+  nav.append(list);
+  main.prepend(nav);
+}
+
+function initFooter() {
+  const footer = document.querySelector(".site-footer--unified");
+  if (!footer) return;
+  footer.innerHTML = `
+    <div class="site-footer__grid">
+      <div class="site-footer__identity">
+        <a class="brand brand--footer" href="index.html">Флора</a>
+        <p>Цветы к важному дню. Помогаем выбрать букет по настроению, поводу и бюджету.</p>
+      </div>
+      <nav class="site-footer__section" aria-label="Навигация в подвале">
+        <h2 class="site-footer__heading">Навигация</h2>
+        <a href="index.html" data-footer-page="home">Главная</a>
+        <a href="catalog.html" data-footer-page="catalog">Каталог</a>
+        <a href="saved.html" data-footer-page="favorites">Избранное</a>
+        <a href="about.html" data-footer-page="about">О флористике</a>
+      </nav>
+      <div class="site-footer__section site-footer__contact">
+        <h2 class="site-footer__heading">Связаться</h2>
+        <a class="site-footer__item" href="tel:+74951283024">
+          <svg class="site-footer__icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.69 2.8a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.33 1.85.56 2.81.69A2 2 0 0 1 22 16.92Z"/></svg>
+          <span>+7 495 128-30-24</span>
+        </a>
+        <span class="site-footer__item">
+          <svg class="site-footer__icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          <span>Ежедневно 09:00–21:00</span>
+        </span>
+        <a class="site-footer__item" href="mailto:hello@flora-shop.ru">
+          <svg class="site-footer__icon" aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+          <span>hello@flora-shop.ru</span>
+        </a>
+      </div>
+      <address class="site-footer__section site-footer__address">
+        <h2 class="site-footer__heading">Флора в Москве</h2>
+        <span class="site-footer__item">
+          <svg class="site-footer__icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+          <span class="site-footer__address-copy"><a href="https://yandex.ru/maps" rel="noopener" target="_blank">Цветной бульвар, 15</a><span>Москва, 127051</span></span>
+        </span>
+        <a class="site-footer__cta" href="bag.html">Перейти в корзину</a>
+      </address>
+    </div>
+    <div class="site-footer__bottom"><p>© <span data-current-year></span> Флора. Все права защищены.</p></div>`;
+
+  footer.querySelector(`[data-footer-page="${document.body.dataset.page}"]`)?.setAttribute("aria-current", "page");
 }
 
 function initMotion() {
@@ -902,19 +1036,135 @@ function initOrder() {
   });
   window.addEventListener("flora:cart-change", (event) => renderSummary(event.detail));
 
-  initOrderValidation(form, (data) => {
-    const orderNumber = String(Date.now()).slice(-6);
-    successText.textContent = `Заказ №${orderNumber} для ${data.recipient} подтверждён.`;
-    form.hidden = true;
-    success.hidden = false;
-    success.focus();
-    setCart([]);
+  initOrderValidation(form, async (data) => {
+    const submit = form.querySelector('[type="submit"]');
+    const message = form.querySelector("[data-form-message]");
+    const cart = getCart();
+    submit.disabled = true;
+    submit.textContent = "Отправляем…";
+    message.textContent = "";
+
+    try {
+      const response = await fetch("/api/orders", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...data,
+          consent: data.consent === "on",
+          items: cart
+        })
+      });
+      const result = await response.json();
+      if (!response.ok) throw new Error(result.error || "Не удалось оформить заказ.");
+
+      successText.textContent = `Заказ №${result.orderId} для ${data.recipient} принят. Мы свяжемся с вами для подтверждения.`;
+      form.hidden = true;
+      success.hidden = false;
+      success.focus();
+      setCart([]);
+    } catch (error) {
+      message.textContent = `${error.message} Проверьте данные и повторите попытку.`;
+      message.classList.add("is-error");
+    } finally {
+      submit.disabled = false;
+      submit.textContent = "Подготовить заявку";
+    }
+  });
+}
+
+function initFloristry() {
+  const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const process = document.querySelector("[data-floristry-process]");
+  if (process) {
+    const steps = [...process.querySelectorAll("[data-process-step]")];
+    const preview = process.querySelector("[data-process-preview]");
+
+    steps.forEach((step) => {
+      const preload = new Image();
+      preload.src = step.dataset.processSrc;
+    });
+
+    const activateStep = (step) => {
+      if (!step || step.getAttribute("aria-pressed") === "true") return;
+      steps.forEach((item) => item.setAttribute("aria-pressed", String(item === step)));
+      preview.src = step.dataset.processSrc;
+      preview.alt = step.dataset.processAlt;
+
+      if (!reduceMotion && preview.animate) {
+        preview.getAnimations().forEach((animation) => animation.cancel());
+        preview.animate(
+          [
+            { opacity: 0, transform: "scale(0.985)" },
+            { opacity: 1, transform: "scale(1)" }
+          ],
+          { duration: 240, easing: "cubic-bezier(0.23, 1, 0.32, 1)" }
+        );
+      }
+    };
+
+    steps.forEach((step) => {
+      step.addEventListener("click", () => activateStep(step));
+    });
+  }
+
+  const picker = document.querySelector("[data-floristry-mood]");
+  if (!picker) return;
+  const image = picker.querySelector("[data-mood-image]");
+  const text = picker.querySelector("[data-mood-text]");
+  const link = picker.querySelector("[data-mood-link]");
+  const moods = {
+    gentle: {
+      src: "images/bouquet-pink-peony-hq.png",
+      alt: "Нежный розовый букет пионов",
+      text: "Пудровые оттенки, округлые формы и мягкие переходы цвета.",
+      href: "catalog.html?occasion=date"
+    },
+    vivid: {
+      src: "images/bouquet-coral-ranunculus.jpg",
+      alt: "Яркий коралловый букет ранункулюсов",
+      text: "Выразительная палитра и живой ритм для заметного поздравления.",
+      href: "catalog.html?occasion=birthday"
+    },
+    airy: {
+      src: "images/bouquet-white-tulip.jpg",
+      alt: "Воздушный букет белых тюльпанов",
+      text: "Светлые цветы, свободный силуэт и ощущение весеннего воздуха.",
+      href: "catalog.html?occasion=universal"
+    }
+  };
+
+  picker.addEventListener("click", (event) => {
+    const choice = event.target.closest("[data-mood]");
+    const mood = choice ? moods[choice.dataset.mood] : null;
+    if (!choice || !mood) return;
+    picker.querySelectorAll("[data-mood]").forEach((button) => button.setAttribute("aria-pressed", String(button === choice)));
+    image.src = mood.src;
+    image.alt = mood.alt;
+    text.textContent = mood.text;
+    link.href = mood.href;
+
+    if (!reduceMotion && image.animate) {
+      image.getAnimations().forEach((animation) => animation.cancel());
+      image.animate(
+        [
+          { opacity: 0, transform: "scale(0.985)" },
+          { opacity: 1, transform: "scale(1)" }
+        ],
+        { duration: 240, easing: "cubic-bezier(0.23, 1, 0.32, 1)" }
+      );
+      text.animate(
+        [{ opacity: 0 }, { opacity: 1 }],
+        { duration: 180, easing: "ease" }
+      );
+    }
   });
 }
 
 function initGlobal() {
-  document.querySelectorAll("[data-current-year]").forEach((node) => { node.textContent = String(new Date().getFullYear()); });
   initHeader();
+  initFooter();
+  initBreadcrumbs();
+  document.querySelectorAll("[data-current-year]").forEach((node) => { node.textContent = String(new Date().getFullYear()); });
   initScrollTop();
   updateCartCount();
   window.addEventListener("flora:cart-change", (event) => updateCartCount(event.detail));
@@ -923,6 +1173,7 @@ function initGlobal() {
 initGlobal();
 
 const page = document.body.dataset.page;
+logCourseworkExamples();
 if (page === "home") initHome();
 if (page === "catalog") initCatalog();
 if (page === "favorites") initFavorites();
@@ -930,4 +1181,5 @@ if (page === "product") initProduct();
 if (page === "cart") initCart();
 if (page === "order") initOrder();
 if (page === "contacts") initContacts();
+if (page === "about") initFloristry();
 initMotion();
